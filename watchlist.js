@@ -22,7 +22,7 @@ async function renderData(){
     let imdbArray = JSON.parse(localStorage.getItem("watchlist"))
     let newHtml = ""
     for(let imdb of imdbArray){
-        const res = await fetch(`http://www.omdbapi.com/?i=${imdb}&apikey=b2ab14a8`)
+        const res = await fetch(`https://www.omdbapi.com/?i=${imdb}&apikey=b2ab14a8`)
         const data = await res.json()
         newHtml += 
         `

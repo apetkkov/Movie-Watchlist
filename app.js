@@ -7,7 +7,7 @@ let movieTitle
 
 // Geting data from the API
 async function getData(){
-    const res = await fetch(`http://www.omdbapi.com/?s=${movieTitle}&apikey=b2ab14a8`)
+    const res = await fetch(`https://www.omdbapi.com/?s=${movieTitle}&apikey=b2ab14a8`)
     const data = await res.json()
 
     if (data.Response === "True"){
@@ -39,7 +39,7 @@ async function renderData(movies){
     let newHtml = ""
     for(let movie of movies){
         let imdb = movie.imdbID
-        const res = await fetch(`http://www.omdbapi.com/?i=${imdb}&apikey=b2ab14a8`)
+        const res = await fetch(`https://www.omdbapi.com/?i=${imdb}&apikey=b2ab14a8`)
         const data = await res.json()
         newHtml += 
         `
