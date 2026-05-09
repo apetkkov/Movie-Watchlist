@@ -86,7 +86,7 @@ form{
 #movies-container,
 #watchlist-container{
     min-height: 600px;
-    margin-top: 25px;
+    margin: 25px auto 0 auto;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -110,8 +110,9 @@ form{
 }
 .movie-section{
     display:flex;
-    flex-wrap: wrap; 
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-wrap: nowrap; 
+    align-items: flex-start;
     width: 90%; 
     margin: 0 auto;
     padding: 20px 0;
@@ -123,6 +124,7 @@ form{
     flex-direction: column;
     justify-content: center;
     gap: 8px;
+    min-width: 0;
 }
 .movie-heading,
 .movie-details{
@@ -131,6 +133,8 @@ form{
    align-items: center;
 }
 .movie-heading{
+    height: auto;
+    width: 90%;
     color: #FFFFFF;
     gap: 6px;
 }
@@ -167,6 +171,13 @@ form{
     padding: 0;
     transition: all 0.1s;
 }
+.read-more{
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+}
 
 #btn{
      text-decoration: none;
@@ -192,9 +203,11 @@ form{
     font-size: 18px;
 }
 
+
 .add-btn:hover,
 .remove-btn:hover,
-a:hover{
+a:hover,
+.read-more:hover{
     transform: translateY(-1px);
 }
 .add-btn:active,

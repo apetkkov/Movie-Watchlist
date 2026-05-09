@@ -12,7 +12,7 @@ async function getData(){
 
     if (data.Response === "True"){
         searchInput.placeholder = "Search for a movie"
-        const movies = data.Search.slice(0, 3)
+        const movies = data.Search.slice(0, 5)
         renderData(movies)
     }
     else{
@@ -33,6 +33,16 @@ searchBtn.addEventListener("click", function(e){
     movieTitle = searchInput.value
     getData()
 })
+
+function getErasedPlot(plot, id) {
+    const limit = 150;
+    if (plot.length > limit) {
+        return `<span id="plot-${id}">${plot.substring(0, limit)}...</span>
+        <button class="read-more" data-id="${id}" data-full="${plot}">Read more</button>`
+    }
+    return plot;
+}
+
 
 // Rendering data by Title, and IMDB
 async function renderData(movies){
@@ -62,7 +72,7 @@ async function renderData(movies){
                     </button>
                 </div>
                 <div class="movie-plot">
-                    <p>${data.Plot}</p>
+                    <p>${getErasedPlot(data.Plot, data.imdbID)}</p>
                 </div>
             </div>
         </div>
@@ -81,5 +91,15 @@ document.addEventListener("click", function(e){
             watchlist.push(movieId)
         }
         localStorage.setItem("watchlist", JSON.stringify(watchlist))
+    }
+})
+
+movieContainer.addEventListener('click', function(e){
+    if (e.target.classList.contains('read-more')) {
+        const btn = e.target;
+        const id = btn.getAttribute('data-id');
+        const fullPlot = btn.getAttribute('data-full')
+        document.getElementById(`plot-${id}`).textContent = fullPlot
+        btn.style.display = 'none'
     }
 })
